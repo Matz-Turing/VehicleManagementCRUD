@@ -2,7 +2,7 @@ package br.com.montadora.teste;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Scanner; // Corrigido import que faltava no código anterior
+import java.util.Scanner; 
 
 import br.com.montadora.conexao.Conexao;
 import br.com.montadora.dao.MotoDAO;
@@ -25,10 +25,7 @@ public class MotoInserir {
                 con = Conexao.abrirConexao();
 
                 if (con != null) {
-                    // IMPORTANTE: Criamos uma instância do MotoDAO.
-                    //             Se o MotoDAO *ainda* não foi atualizado,
-                    //             a chamada motoDao.inserir(moto) FALHARÁ
-                    //             devido à coluna renomeada no banco.
+                   
                     MotoDAO motoDao = new MotoDAO(con);
 
                     switch (opcao) {
@@ -62,23 +59,21 @@ public class MotoInserir {
         }
     }
 
-    // NENHUMA ALTERAÇÃO NECESSÁRIA AINDA NESTE MÉTODO
     private static void inserirMotosAutomaticamente(MotoDAO motoDao) throws SQLException {
         Moto moto = new Moto();
 
         System.out.println("\nInserindo Moto 1 (Honda CG 160)...");
         moto.setMontadora("Honda");
-        moto.setNomeCarro("CG 160"); // <-- Ainda usamos setNomeCarro aqui
+        moto.setNomeCarro("CG 160"); 
         moto.setQuantidadeAdesivos(2);
-        System.out.println("Resultado: " + motoDao.inserir(moto)); // <-- Chamada ao DAO (pode falhar se DAO não atualizado)
+        System.out.println("Resultado: " + motoDao.inserir(moto)); 
 
         System.out.println("\nInserindo Moto 2 (Yamaha Fazer 250)...");
         moto.setMontadora("Yamaha");
-        moto.setNomeCarro("Fazer 250"); // <-- Ainda usamos setNomeCarro aqui
+        moto.setNomeCarro("Fazer 250"); 
         moto.setQuantidadeAdesivos(4);
         System.out.println("Resultado: " + motoDao.inserir(moto));
 
-        // ... (restante das inserções automáticas - todas usam setNomeCarro)
         System.out.println("\nInserindo Moto 3 (Suzuki GSX-S750)...");
         moto.setMontadora("Suzuki");
         moto.setNomeCarro("GSX-S750");
@@ -100,7 +95,6 @@ public class MotoInserir {
         System.out.println("\nInserção automática concluída.");
     }
 
-    // NENHUMA ALTERAÇÃO NECESSÁRIA AINDA NESTE MÉTODO
     private static void inserirMotoManualmente(MotoDAO motoDao, Scanner scanner) throws SQLException {
         Moto motoManual = new Moto();
 
@@ -120,8 +114,7 @@ public class MotoInserir {
             System.out.print("Digite o nome/modelo da moto: ");
             nomeMoto = scanner.nextLine();
         }
-        // IMPORTANTE: Ainda estamos usando o método setNomeCarro aqui,
-        //             pois é o que existe no modelo Veiculo/Moto não refatorado.
+        
         motoManual.setNomeCarro(nomeMoto.trim());
 
         int quantidadeAdesivos = -1;
@@ -142,8 +135,7 @@ public class MotoInserir {
         }
 
         System.out.println("\nInserindo moto com os dados fornecidos...");
-        // IMPORTANTE: A chamada abaixo pode falhar se o MotoDAO
-        //             ainda não foi atualizado para usar a coluna "nomemoto".
+        
         System.out.println("Resultado: " + motoDao.inserir(motoManual));
     }
 }
