@@ -9,9 +9,9 @@ public class ConexaoFactory {
 	public static void main(String[] args) throws SQLException 	{
 		
 		Connection conexao = null;
-		//Na linha abaixo, estou armazenando o caminho do BD na vari�vel url
+		//Na linha abaixo, estou armazenando o caminho do BD na variavel url
 		String url = "jdbc:mysql://localhost:3307/teste";
-		conexao = DriverManager.getConnection(url, "root", "*123456HAS*");
+		conexao = DriverManager.getConnection(url, "root", "senha1234");
 		System.out.println("Abriu a conexão.");
 		conexao.close();
 	}
