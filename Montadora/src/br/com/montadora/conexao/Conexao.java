@@ -10,13 +10,11 @@ public class Conexao {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/montadora";
-			//String url = "jdbc:mysql://localhost:3307/montadora";
 			
-			//"jdbc:mysql://localhost:3306/teste","root", "*123456HAS*"
+			String url = "jdbc:mysql://localhost:3306/montadora";
+			
 			final String USER = "root";
-			final String PASS = "teste2904";
+			final String PASS = "senha1234";
 			
 			con = DriverManager.getConnection(url, USER, PASS);
 			System.out.println("Conexao aberta");
