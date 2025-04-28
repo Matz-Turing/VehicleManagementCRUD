@@ -1,7 +1,7 @@
 package br.com.montadora.teste;
 
 import java.sql.Connection;
-// import java.sql.SQLException; // Não é mais estritamente necessário importar aqui
+
 import java.util.Scanner;
 
 import br.com.montadora.conexao.Conexao;
@@ -70,13 +70,7 @@ public class MotoDeletar {
                     System.out.println("Erro: Não foi possível abrir a conexão com o banco de dados.");
                 }
 
-            // --- BLOCO CATCH DE SQLEXCEPTION REMOVIDO ---
-            // } catch (SQLException e) {
-            //     System.err.println("Erro de Banco de Dados durante a operação: " + e.getMessage());
-            //     e.printStackTrace();
-            // --- FIM DO BLOCO REMOVIDO ---
-
-            } catch (Exception e) { // Este catch geral permanece
+            } catch (Exception e) { 
                 System.err.println("Ocorreu um erro inesperado durante a exclusão: " + e.getMessage());
                 e.printStackTrace();
             } finally {
